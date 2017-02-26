@@ -16,8 +16,7 @@ FactoryGirl.define do
     movie
     auditorium
     start_time DateTime.now
-    # Add movie length time in minutes converted into seconds
-    end_time { DateTime.now + (60 * "#{movie.minutes}".to_i) }
+    end_time { DateTime.now + ("#{movie.minutes}".to_i.minutes) }
     price 10.00
     tickets_available 120
   end

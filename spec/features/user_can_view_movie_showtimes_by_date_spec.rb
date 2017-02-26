@@ -2,11 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'User can view movie showtimes by date' do
   scenario 'they see all movie showtimes on the current date by default' do
-    movie = create(:movie)
-    auditorium = create(:auditorium)
     showtime = create(:showtime)
     current_date = DateTime.now.strftime('%m/%d/%Y')
-
     visit showtimes_path
 
     within('#showtimes-header') do
