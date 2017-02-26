@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226222155) do
+ActiveRecord::Schema.define(version: 20170226222834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auditoria", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "movies", force: :cascade do |t|
     t.text     "title"
@@ -25,4 +32,19 @@ ActiveRecord::Schema.define(version: 20170226222155) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "showtimes", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "auditorium_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.decimal  "price"
+    t.integer  "tickets_available"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["auditorium_id"], name: "index_showtimes_on_auditorium_id", using: :btree
+    t.index ["movie_id"], name: "index_showtimes_on_movie_id", using: :btree
+  end
+
+  add_foreign_key "showtimes", "auditoria"
+  add_foreign_key "showtimes", "movies"
 end
