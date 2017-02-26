@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User can view showtimes for all movies by date' do
+RSpec.feature 'User can view movie showtimes by date' do
   scenario 'they see all movie showtimes on the current date by default' do
     movie = create(:movie)
     auditorium = create(:auditorium)
@@ -17,6 +17,7 @@ RSpec.feature 'User can view showtimes for all movies by date' do
       expect(page).to have_content(movie.title)
       expect(page).to have_content(movie.minutes)
       expect(page).to have_content(movie.rating)
+      expect(page).to have_content(movie.genre)
       expect(page).to have_content(movie.image_url)
       expect(page).to have_content(auditorium.title)
       expect(page).to have_content(showtime.start_time)

@@ -3,6 +3,7 @@ FactoryGirl.define do
     title 'Ex Machina'
     minutes 108
     rating 'R'
+    genre 'Sci-Fi'
     image_url 'https://c1.staticflickr.com/8/7649/17097191625_77c28cf79b_b.jpg'
   end
 
@@ -21,8 +22,8 @@ FactoryGirl.define do
     tickets_available 120
   end
 
-  factory :order do
-    name 'David'
-    email 'david@example.com'
-  end
+  # factory :order do
+  #   name 'David'
+  #   email 'david@example.com'
+  # end
 end
