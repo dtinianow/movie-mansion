@@ -6,6 +6,7 @@ RSpec.feature 'User can view movie showtimes by date' do
     auditorium = create(:auditorium)
     showtime = create(:showtime, movie: movie, auditorium: auditorium)
     current_date = DateTime.now.strftime('%m/%d/%Y')
+
     visit showtimes_path
 
     within('#showtimes-header') do

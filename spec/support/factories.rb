@@ -13,10 +13,11 @@ FactoryGirl.define do
   end
 
   factory :showtime do
+    date = DateTime.now.middle_of_day
     movie
     auditorium
-    start_time DateTime.now
-    end_time { DateTime.now + ("#{movie.minutes}".to_i.minutes) }
+    start_time date
+    end_time { date + movie.minutes.minutes }
     price 10.00
     tickets_available 120
   end
