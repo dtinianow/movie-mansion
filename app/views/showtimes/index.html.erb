@@ -22,7 +22,7 @@
         <td><%= movie.genre %></td>
         <td>
           <% movie.showtimes.each do |showtime| %>
-          <%= showtime.start_time %>
+          <%= link_to showtime.start_time, new_order_path(showtime) %>
           <% end %>
         </td>
       </tr>
