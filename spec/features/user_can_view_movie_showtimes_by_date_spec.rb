@@ -5,10 +5,11 @@ RSpec.feature 'User can view movie showtimes by date' do
     movie = create(:movie)
     auditorium = create(:auditorium)
     showtime = create(:showtime,
-      movie: movie,
-      auditorium: auditorium
+    movie: movie,
+    auditorium: auditorium
     )
     current_date = DateTime.now.strftime('%-m/%-d/%Y')
+    formatted_showtime = showtime.start_time.strftime("%-I:%M %p")
 
     visit showtimes_path
 
@@ -17,12 +18,12 @@ RSpec.feature 'User can view movie showtimes by date' do
     end
 
     within('#showtimes-table tbody tr:nth-child(1)') do
-      expect(page).to have_content(movie.image_url)
+      expect(page).to have_xpath("//img[@src='#{movie.image_url}']")
       expect(page).to have_content(movie.title)
       expect(page).to have_content(movie.minutes)
       expect(page).to have_content(movie.rating)
       expect(page).to have_content(movie.genre)
-      expect(page).to have_content(showtime.start_time)
+      expect(page).to have_content(formatted_showtime)
     end
   end
 
@@ -31,10 +32,11 @@ RSpec.feature 'User can view movie showtimes by date' do
     movie = create(:movie)
     auditorium = create(:auditorium)
     showtime = create(:showtime,
-      movie: movie,
-      auditorium: auditorium,
-      start_time: DateTime.strptime(current_date, '%m/%d/%Y')
+    movie: movie,
+    auditorium: auditorium,
+    start_time: DateTime.strptime(current_date, '%m/%d/%Y')
     )
+    formatted_showtime = showtime.start_time.strftime("%-I:%M %p")
 
     visit showtimes_path(date: current_date)
 
@@ -43,12 +45,12 @@ RSpec.feature 'User can view movie showtimes by date' do
     end
 
     within('#showtimes-table tbody tr:nth-child(1)') do
-      expect(page).to have_content(movie.image_url)
+      expect(page).to have_xpath("//img[@src='#{movie.image_url}']")
       expect(page).to have_content(movie.title)
       expect(page).to have_content(movie.minutes)
       expect(page).to have_content(movie.rating)
       expect(page).to have_content(movie.genre)
-      expect(page).to have_content(showtime.start_time)
+      expect(page).to have_content(formatted_showtime)
     end
   end
 end
