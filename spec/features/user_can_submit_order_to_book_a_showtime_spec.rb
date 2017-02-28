@@ -18,7 +18,7 @@ RSpec.feature 'User can submit order to book a showtime' do
     expect(current_path).to eq new_order_path
 
     within('#showtime-order-confirmation') do
-      expect(page).to have_content "#{movie.name} on \
+      expect(page).to have_content "Purchase Ticket for #{movie.name} on \
         #{date.strftime('%-m/%-d/%Y')} at \
         #{showtime.start_time.strftime('%-m/%-d/%Y')}"
     end

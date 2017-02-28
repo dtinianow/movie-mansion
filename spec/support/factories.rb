@@ -22,8 +22,9 @@ FactoryGirl.define do
     tickets_available 120
   end
 
-  # factory :order do
-  #   name 'David'
-  #   email 'david@example.com'
-  # end
+  factory :order do
+    first_name 'David'
+    last_name 'T'
+    email 'david@example.com'
+  end
 end
