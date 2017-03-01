@@ -5,8 +5,8 @@ RSpec.feature 'User can book a showtime' do
     movie = create(:movie)
     auditorium = create(:auditorium)
     showtime = create(:showtime, movie: movie, auditorium: auditorium)
-    formatted_date = showtime.start_time.strftime('%-m/%-d/%Y')
-    formatted_showtime = showtime.start_time.strftime('%-I:%M %p')
+
+    expect(Order.count).to eq 0
 
     visit new_order_path(showtime: showtime)
 
@@ -14,14 +14,15 @@ RSpec.feature 'User can book a showtime' do
       fill_in 'First Name', with: 'David'
       fill_in 'Last Name', with: 'T'
       fill_in 'Email Address', with: 'david@example.com'
-      fill_in 'Credit Card Number', with: '555555555555'
+      fill_in 'Credit Card Number', with: '55555555555555555'
       fill_in 'Credit Card Expiration Date', with: '03/19'
       click_button 'Book Showtime'
     end
 
-    order = Order.last
-
     expect(current_path).to eq showtimes_path
+    expect(Order.count).to eq 1
+
+    order = Order.last
 
     within('.alert') do
       expect(page).to have_content "Thanks for your order #{order.first_name}!

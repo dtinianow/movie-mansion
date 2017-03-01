@@ -4,10 +4,7 @@ RSpec.feature 'User can view movie showtimes by date' do
   scenario 'they see all movie showtimes on the current date by default' do
     movie = create(:movie)
     auditorium = create(:auditorium)
-    showtime = create(:showtime,
-    movie: movie,
-    auditorium: auditorium
-    )
+    showtime = create(:showtime, movie: movie, auditorium: auditorium)
     current_date = DateTime.now.strftime('%-m/%-d/%Y')
     formatted_showtime = showtime.start_time.strftime("%-I:%M %p")
 
@@ -32,9 +29,9 @@ RSpec.feature 'User can view movie showtimes by date' do
     movie = create(:movie)
     auditorium = create(:auditorium)
     showtime = create(:showtime,
-    movie: movie,
-    auditorium: auditorium,
-    start_time: DateTime.strptime(current_date, '%m/%d/%Y')
+      movie: movie,
+      auditorium: auditorium,
+      start_time: DateTime.strptime(current_date, '%m/%d/%Y')
     )
     formatted_showtime = showtime.start_time.strftime("%-I:%M %p")
 
