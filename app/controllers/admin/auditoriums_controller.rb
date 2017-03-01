@@ -3,6 +3,21 @@ class Admin::AuditoriumsController < Admin::BaseController
     @auditoriums = Auditorium.all
   end
 
+  def new
+    @auditorium = Auditorium.new
+  end
+
+  def create
+    auditorium = Auditorium.new(auditorium_params)
+    if auditorium.save
+      flash[:success] = 'Auditorium successfully created!'
+      redirect_to admin_auditoriums_path
+    else
+      flash.now[:danger] = 'Oops! Something went wrong.'
+      render :new
+    end
+  end
+
   def edit
     @auditorium = Auditorium.find(params[:id])
   end

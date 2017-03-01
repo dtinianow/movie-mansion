@@ -1,0 +1,16 @@
+<div class='admin-new-auditorium'>
+  <h1 class='admin-new-auditorium-header'>Add New Auditorium</h1>
+  <br>
+  <div class='admin-new-auditorium-form'>
+    <%= form_for @auditorium, url: admin_auditoriums_path, method: :create do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :capacity  %>
+    <%= f.text_field :capacity %>
+    <br>
+    <%= f.submit 'Create Auditorium' %>
+    <% end %>
+    <br>
+  </div>
+</div>
