@@ -30,7 +30,7 @@ RSpec.feature 'User can book a showtime' do
     end
   end
 
-  scenario 'they cannot book an order if there are no tickets are available' do
+  scenario 'they cannot book an order if there are no tickets available' do
     movie = create(:movie)
     auditorium = create(:auditorium)
     showtime = create(

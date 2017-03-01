@@ -1,0 +1,9 @@
+<h1 id='admin-movies-header'>Order History By Movie</h1>
+
+<div id='admin-movies-list'>
+  <li>
+    <% @movies.each do |movie| %>
+    <ul><%= link_to movie.title, movie_orders_path(movie) %></ul>
+    <% end %>
+  </li>
+</div>
