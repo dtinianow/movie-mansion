@@ -1,0 +1,26 @@
+<h1 id='admin-auditoriums-header'>Auditoriums</h1>
+
+<div id='admin-auditoriums'>
+  <table id='admin-auditoriums-table'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Capacity</th>
+        <th>Showtimes</th>
+        <th>Auditorium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @auditoriums.each do |auditorium| %>
+      <tr>
+        <td><%= auditorium.id %></td>
+        <td><%= auditorium.title %></td>
+        <td><%= auditorium.capacity %></td>
+        <td><%= link_to 'Manage Showtimes', admin_auditoriums_showtimes_path(auditorium) %></td>
+        <td><%= link_to 'Manage Auditorium', edit_admin_auditorium_path(auditorium) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
