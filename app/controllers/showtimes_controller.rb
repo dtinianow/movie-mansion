@@ -1,6 +1,4 @@
 class ShowtimesController < ApplicationController
-  include DateHelper
-  
   def index
     @date = find_date(params[:date])
     @movies = Movie.showings_on_date(@date)

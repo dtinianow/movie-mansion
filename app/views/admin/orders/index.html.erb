@@ -19,8 +19,8 @@
         <td><%= order.id %></td>
         <td><%= order.first_name %> <%= order.last_name %></td>
         <td><%= order.showtime.movie.title %></td>
-        <td><%= order.showtime.start_time.strftime('%-m/%-d/%Y') %></td>
-        <td><%= order.showtime.start_time.strftime('%-I:%M %p') %></td>
+        <td><%= format_date(order.showtime.start_time) %></td>
+        <td><%= format_time(order.showtime.start_time) %></td>
         <td><%= order.showtime.price %></td>
         <td><%= order.showtime.auditorium.title %></td>
       </tr>

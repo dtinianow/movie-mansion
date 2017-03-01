@@ -6,4 +6,12 @@ module DateHelper
       DateTime.now.to_date
     end
   end
+
+  def format_time(datetime)
+    datetime.strftime("%-I:%M %p")
+  end
+
+  def format_date(datetime)
+    datetime.strftime('%-m/%-d/%Y')
+  end
 end

@@ -5,5 +5,6 @@ This email is your ticket to the movies!
 You've made a reservation to go see <%= @order.showtime.movie.title %> on
 <%= @order.showtime.start_time.strftime('%-m/%-d/%Y') %> at
 <%= @order.showtime.start_time.strftime('%-I:%M %p') %>.
+Your movie will be playing in theater <%= @order.showtime.auditorium.title %>.
 
 Thanks for booking at the Movie Mansion and enjoy the film!

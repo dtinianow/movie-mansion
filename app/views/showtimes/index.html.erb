@@ -23,7 +23,7 @@
         <td>
           <% movie.showtimes.each do |showtime| %>
           <% if tickets_available?(showtime) %>
-            <%= link_to showtime.start_time.strftime("%-I:%M %p"), \
+            <%= link_to format_time(showtime.start_time), \
               new_order_path(showtime: showtime) %>
             <% end %>
           <% end %>
