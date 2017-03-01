@@ -1,0 +1,30 @@
+<h1 id='orders-header'>All Orders</h1>
+
+<div id='all-orders'>
+  <table id='orders-table'>
+    <thead>
+      <tr>
+        <th>Order Number</th>
+        <th>Name</th>
+        <th>Movie</th>
+        <th>Date</th>
+        <th>Showtime</th>
+        <th>Price</th>
+        <th>Auditorium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.first_name %> <%= order.last_name %></td>
+        <td><%= order.showtime.movie.title %></td>
+        <td><%= order.showtime.start_time.strftime('%-m/%-d/%Y') %></td>
+        <td><%= order.showtime.start_time.strftime('%-I:%M %p') %></td>
+        <td><%= order.showtime.price %></td>
+        <td><%= order.showtime.auditorium.title %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

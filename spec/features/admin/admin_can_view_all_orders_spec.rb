@@ -1,0 +1,29 @@
+require 'rails_helper'
+
+RSpec.feature 'User can book a showtime' do
+  scenario 'they fill out the order form and successfully book the showtime' do
+    movie = create(:movie)
+    auditorium = create(:auditorium)
+    showtime = create(:showtime, movie: movie, auditorium: auditorium)
+    order = create(:order, showtime: showtime)
+    formatted_date = showtime.start_time.strftime('%-m/%-d/%Y')
+    formatted_showtime = showtime.start_time.strftime('%-I:%M %p')
+
+    visit admin_orders_path
+
+    within('#orders-header') do
+      expect(page).to have_content 'All Orders'
+    end
+
+    within('#orders-table tbody tr:nth-child(1)') do
+      expect(page).to have_content(order.id)
+      expect(page).to have_content(order.first_name)
+      expect(page).to have_content(order.last_name)
+      expect(page).to have_content(movie.title)
+      expect(page).to have_content(formatted_date)
+      expect(page).to have_content(formatted_showtime)
+      expect(page).to have_content(showtime.price)
+      expect(page).to have_content(showtime.auditorium.title)
+    end
+  end
+end
