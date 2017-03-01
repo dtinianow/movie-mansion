@@ -2,8 +2,8 @@
   <h1 id='new-showtime-order-header'>
     Purchase Ticket for
     <%= @showtime.movie.title %> on
-    <%= @showtime.start_time.strftime('%-m/%-d/%Y') %> at
-    <%= @showtime.start_time.strftime('%-I:%M %p') %>
+    <%= format_date(@showtime.start_time) %> at
+    <%= format_time(@showtime.start_time) %>
   </h1>
   <br>
   <div id='new-showtime-order-form'>

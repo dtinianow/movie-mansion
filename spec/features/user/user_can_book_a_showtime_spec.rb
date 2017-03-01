@@ -7,6 +7,7 @@ RSpec.feature 'User can book a showtime' do
     showtime = create(:showtime, movie: movie, auditorium: auditorium)
 
     expect(Order.count).to eq 0
+    expect(showtime.tickets_available).to eq 120
 
     visit new_order_path(showtime: showtime)
 
@@ -21,6 +22,8 @@ RSpec.feature 'User can book a showtime' do
 
     expect(current_path).to eq showtimes_path
     expect(Order.count).to eq 1
+    showtime.reload
+    expect(showtime.tickets_available).to eq 119
 
     order = Order.last
 
@@ -41,6 +44,7 @@ RSpec.feature 'User can book a showtime' do
     )
 
     expect(Order.count).to eq 0
+    expect(showtime.tickets_available).to eq(0)
 
     visit new_order_path(showtime: showtime)
 
@@ -55,6 +59,7 @@ RSpec.feature 'User can book a showtime' do
 
     expect(current_path).to eq showtimes_path
     expect(Order.count).to eq 0
+    expect(showtime.tickets_available).to eq(0)
 
     within('.alert') do
       expect(page).to have_content 'Sorry, there are no more tickets available.'

@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
       flash[:danger] = 'Sorry, there are no more tickets available.'
       redirect_to showtimes_path
     elsif order.save # check that CC is valid here and order.save
+      order.showtime.update(tickets_available: order.showtime.tickets_available - 1)
       UserNotifier.order_confirmation(order).deliver_now
       flash[:success] = "Thanks for your order #{order_params[:first_name]}!
       A confirmation email has been sent to #{order_params[:email]}."
