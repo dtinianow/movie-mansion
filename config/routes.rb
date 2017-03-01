@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index]
     resources :movies, only: [:index]
-    resources :auditoriums, only: [:index, :edit]
+    resources :auditoriums, only: [:index, :edit, :update]
   end
 end

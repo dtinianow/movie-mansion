@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Admin can view all auditoriums' do
   scenario 'they visit the admin auditoriums path and see all auditoriums' do
-    # movie = create(:movie)
     auditorium = create(:auditorium)
-    # showtime = create(:showtime, movie: movie, auditorium: auditorium)
 
     visit admin_auditoriums_path
 
