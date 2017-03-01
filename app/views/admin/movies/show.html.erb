@@ -1,0 +1,30 @@
+<h1 class='admin-orders-header'>Orders for <%= @movie.title %></h1>
+
+<div class='admin-orders'>
+  <table class='admin-orders-table'>
+    <thead>
+      <tr>
+        <th>Order Number</th>
+        <th>Name</th>
+        <th>Movie</th>
+        <th>Date</th>
+        <th>Showtime</th>
+        <th>Price</th>
+        <th>Auditorium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movie.orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.first_name %> <%= order.last_name %></td>
+        <td><%= order.showtime.movie.title %></td>
+        <td><%= format_date(order.showtime.start_time) %></td>
+        <td><%= format_time(order.showtime.start_time) %></td>
+        <td><%= order.showtime.price %></td>
+        <td><%= order.showtime.auditorium.title %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

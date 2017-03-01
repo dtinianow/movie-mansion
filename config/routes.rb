@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :orders, only: [:index]
     resources :movies, only: [:index]
+    get '/movies/:id/orders', to: 'movie_orders#index', as: 'movie_orders'
   end
 end
