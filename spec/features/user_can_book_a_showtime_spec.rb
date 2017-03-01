@@ -21,30 +21,26 @@ RSpec.feature 'User can book a showtime' do
 
     order = Order.last
 
-    expect(current_path).to eq order_path(order)
+    expect(current_path).to eq showtimes_path
 
     within('.alert') do
       expect(page).to have_content "Thanks for your order #{order.first_name}!
         A confirmation email has been sent to #{order.email}."
     end
 
-    within('.showtime-order-header') do
-      expect(page).to have_content "Order No. #{order.id}"
-    end
-
-    within('.showtime-order-table') do
-      expect(page).to have_content(order.id)
-      expect(page).to have_content(order.first_name)
-      expect(page).to have_content(order.last_name)
-      expect(page).to have_content(order.email)
-      expect(page).to have_content(movie.title)
-      expect(page).to have_content(movie.minutes)
-      expect(page).to have_content(movie.rating)
-      expect(page).to have_content(movie.genre)
-      expect(page).to have_content(formatted_date)
-      expect(page).to have_content(formatted_showtime)
-      expect(page).to have_content(showtime.auditorium.title)
-      expect(page).to have_content(showtime.price)
-    end
+    # within('.showtime-order-table') do
+    #   expect(page).to have_content(order.id)
+    #   expect(page).to have_content(order.first_name)
+    #   expect(page).to have_content(order.last_name)
+    #   expect(page).to have_content(order.email)
+    #   expect(page).to have_content(movie.title)
+    #   expect(page).to have_content(movie.minutes)
+    #   expect(page).to have_content(movie.rating)
+    #   expect(page).to have_content(movie.genre)
+    #   expect(page).to have_content(formatted_date)
+    #   expect(page).to have_content(formatted_showtime)
+    #   expect(page).to have_content(showtime.auditorium.title)
+    #   expect(page).to have_content(showtime.price)
+    # end
   end
 end
