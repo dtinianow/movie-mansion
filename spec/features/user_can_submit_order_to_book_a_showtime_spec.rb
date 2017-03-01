@@ -8,8 +8,8 @@ RSpec.feature 'User can submit order to book a showtime' do
       movie: movie,
       auditorium: auditorium
     )
-    current_date = DateTime.now.strftime('%-m/%-d/%Y')
-    formatted_showtime = showtime.start_time.strftime("%-I:%M %p")
+    formatted_date = showtime.start_time.strftime('%-m/%-d/%Y')
+    formatted_showtime = showtime.start_time.strftime('%-I:%M %p')
 
     visit showtimes_path
 
@@ -17,17 +17,18 @@ RSpec.feature 'User can submit order to book a showtime' do
 
     expect(current_path).to eq new_order_path
 
-    within('#showtime-order-confirmation') do
-      expect(page).to have_content "Purchase Ticket for #{movie.name} on \
-        #{date.strftime('%-m/%-d/%Y')} at \
-        #{showtime.start_time.strftime('%-m/%-d/%Y')}"
+    within('#new-showtime-order-header') do
+      expect(page).to have_content "Purchase Ticket for #{movie.title} on 
+      #{formatted_date} at #{formatted_showtime}"
     end
 
-    within('#showtime-order-form') do
-      expect(page).to have_content 'Name'
+    within('#new-showtime-order-form') do
+      expect(page).to have_content 'First Name'
+      expect(page).to have_content 'Last Name'
       expect(page).to have_content 'Email'
       expect(page).to have_content 'Credit Card Number'
-      expect(page).to have_content 'Expiration Date'
+      expect(page).to have_content 'Credit Card Expiration Date'
+      expect(page).to have_button 'Book Showtime'
     end
   end
 end

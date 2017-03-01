@@ -1,0 +1,30 @@
+<div id='new-showtime-order-page'>
+  <h1 id='new-showtime-order-header'>
+    Purchase Ticket for
+    <%= @showtime.movie.title %> on
+    <%= @showtime.start_time.strftime('%-m/%-d/%Y') %> at
+    <%= @showtime.start_time.strftime('%-I:%M %p') %>
+  </h1>
+  <br>
+  <div id='new-showtime-order-form'>
+    <%= form_for @order do |f| %>
+    <%= f.label :first_name, 'First Name' %>
+    <%= f.text_field :first_name %>
+    <br>
+    <%= f.label :last_name, 'Last Name' %>
+    <%= f.text_field :last_name %>
+    <br>
+    <%= f.label :email, 'Email Address' %>
+    <%= f.text_field :email %>
+    <br>
+    <%= f.label :card_number, 'Credit Card Number' %>
+    <%= f.text_field :card_number %>
+    <br>
+    <%= f.label :card_exp_date, 'Credit Card Expiration Date' %>
+    <%= f.text_field :card_exp_date %>
+    <br>
+    <%= f.submit 'Book Showtime' %>
+    <% end %>
+    <br>
+  </div>
+</div>
