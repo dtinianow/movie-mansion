@@ -23,6 +23,7 @@
     <%= f.label :card_exp_date, 'Credit Card Expiration Date' %>
     <%= f.text_field :card_exp_date %>
     <br>
+    <%= f.hidden_field :showtime_id, :value => @showtime.id %>
     <%= f.submit 'Book Showtime' %>
     <% end %>
     <br>

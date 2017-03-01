@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
   def create
     order = Order.create(order_params)
+    UserNotifier.order_confirmation(order).deliver_now
     flash[:success] = "Thanks for your order #{order_params[:first_name]}!
       A confirmation email has been sent to #{order_params[:email]}."
     redirect_to showtimes_path
@@ -19,7 +20,8 @@ class OrdersController < ApplicationController
       :last_name,
       :email,
       :card_number,
-      :card_exp_date
+      :card_exp_date,
+      :showtime_id
     )
   end
 end

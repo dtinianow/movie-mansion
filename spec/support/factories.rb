@@ -23,6 +23,7 @@ FactoryGirl.define do
   end
 
   factory :order do
+    showtime
     first_name 'David'
     last_name 'T'
     email 'david@example.com'
