@@ -6,10 +6,7 @@ RSpec.describe Movie, type: :model do
   it 'should get movie showtimes on a specific date' do
     movie = create(:movie)
     auditorium = create(:auditorium)
-    showtime = create(:showtime,
-      movie: movie,
-      auditorium: auditorium
-    )
+    showtime = create(:showtime, movie: movie, auditorium: auditorium)
     current_date = DateTime.now.middle_of_day
 
     movies = Movie.showings_on_date(current_date)
@@ -24,10 +21,7 @@ RSpec.describe Movie, type: :model do
   it 'should not return movies if there are no showtimes on that date' do
     movie = create(:movie)
     auditorium = create(:auditorium)
-    showtime = create(:showtime,
-      movie: movie,
-      auditorium: auditorium
-    )
+    showtime = create(:showtime, movie: movie, auditorium: auditorium)
     tomorrow = DateTime.tomorrow.middle_of_day
 
     movies = Movie.showings_on_date(tomorrow)

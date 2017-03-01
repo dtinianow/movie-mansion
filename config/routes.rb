@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create]
 
   namespace :admin do
+    namespace :movies do
+      get ':id/orders', to: 'orders#index', as: 'orders'
+    end
     resources :orders, only: [:index]
     resources :movies, only: [:index]
-    get '/movies/:id/orders', to: 'movie_orders#index', as: 'movie_orders'
   end
 end

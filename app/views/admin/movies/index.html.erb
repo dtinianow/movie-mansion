@@ -3,7 +3,7 @@
 <div id='admin-movies-list'>
   <li>
     <% @movies.each do |movie| %>
-    <ul><%= link_to movie.title, admin_movie_orders_path(movie) %></ul>
+    <ul><%= link_to movie.title, admin_movies_orders_path(movie) %></ul>
     <% end %>
   </li>
 </div>
