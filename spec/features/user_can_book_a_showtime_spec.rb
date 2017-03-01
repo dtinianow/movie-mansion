@@ -26,22 +26,38 @@ RSpec.feature 'User can book a showtime' do
 
     within('.alert') do
       expect(page).to have_content "Thanks for your order #{order.first_name}!
-        A confirmation email has been sent to #{order.email}."
+      A confirmation email has been sent to #{order.email}."
+    end
+  end
+
+  scenario 'they cannot book an order if there are no tickets are available' do
+    movie = create(:movie)
+    auditorium = create(:auditorium)
+    showtime = create(
+      :showtime,
+      movie: movie,
+      auditorium: auditorium,
+      tickets_available: 0
+    )
+
+    expect(Order.count).to eq 0
+
+    visit new_order_path(showtime: showtime)
+
+    within('#new-showtime-order-form') do
+      fill_in 'First Name', with: 'David'
+      fill_in 'Last Name', with: 'T'
+      fill_in 'Email Address', with: 'david@example.com'
+      fill_in 'Credit Card Number', with: '55555555555555555'
+      fill_in 'Credit Card Expiration Date', with: '03/19'
+      click_button 'Book Showtime'
     end
 
-    # within('.showtime-order-table') do
-    #   expect(page).to have_content(order.id)
-    #   expect(page).to have_content(order.first_name)
-    #   expect(page).to have_content(order.last_name)
-    #   expect(page).to have_content(order.email)
-    #   expect(page).to have_content(movie.title)
-    #   expect(page).to have_content(movie.minutes)
-    #   expect(page).to have_content(movie.rating)
-    #   expect(page).to have_content(movie.genre)
-    #   expect(page).to have_content(formatted_date)
-    #   expect(page).to have_content(formatted_showtime)
-    #   expect(page).to have_content(showtime.auditorium.title)
-    #   expect(page).to have_content(showtime.price)
-    # end
+    expect(current_path).to eq showtimes_path
+    expect(Order.count).to eq 0
+
+    within('.alert') do
+      expect(page).to have_content 'Sorry, there are no more tickets available.'
+    end
   end
 end
