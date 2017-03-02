@@ -14,7 +14,7 @@ RSpec.feature 'Admin can view all auditoriums' do
       expect(page).to have_content(auditorium.id)
       expect(page).to have_content(auditorium.title)
       expect(page).to have_content(auditorium.capacity)
-      expect(page).to have_link('Manage Auditorium')
+      expect(page).to have_link('Manage')
     end
   end
 end

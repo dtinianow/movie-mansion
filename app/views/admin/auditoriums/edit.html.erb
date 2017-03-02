@@ -1,9 +1,9 @@
-<div class='admin-edit-auditorium'>
-  <h1 class='admin-edit-auditorium-header'>
+<div class='admin-edit-auditorium container-fluid'>
+  <h1 class='admin-edit-auditorium-header text-center well'>
     Edit Auditorium <%= @auditorium.title %>
   </h1>
   <br>
-  <div class='admin-edit-auditorium-form'>
+  <div class='admin-edit-auditorium-form well new-form text-center'>
     <%= form_for @auditorium, url: admin_auditorium_path(@auditorium), method: :patch do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -13,6 +13,7 @@
     <br>
     <%= f.submit 'Update Auditorium' %>
     <% end %>
+    <%= link_to 'Cancel', admin_auditoriums_path %>
     <br>
   </div>
 </div>

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create]
 
   namespace :admin do
+    root 'root#index'
+
     namespace :movies do
       get ':id/orders', to: 'orders#index', as: 'orders'
     end

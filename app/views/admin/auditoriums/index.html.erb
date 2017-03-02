@@ -1,24 +1,26 @@
-<h1 id='admin-auditoriums-header'>Auditoriums</h1>
+<div class='container-fluid'>
+  <h1 id='admin-auditoriums-header' class='text-center well'>Auditoriums</h1>
 
-<div id='admin-auditoriums'>
-  <table id='admin-auditoriums-table'>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Capacity</th>
-        <th>Auditorium</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @auditoriums.each do |auditorium| %>
-      <tr>
-        <td><%= auditorium.id %></td>
-        <td><%= auditorium.title %></td>
-        <td><%= auditorium.capacity %></td>
-        <td><%= link_to 'Manage Auditorium', edit_admin_auditorium_path(auditorium) %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div id='admin-auditoriums'>
+    <table id='admin-auditoriums-table' class=' table table-striped table-bordered table-condensed'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Capacity</th>
+          <th>Auditorium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @auditoriums.each do |auditorium| %>
+        <tr>
+          <td><%= auditorium.id %></td>
+          <td><%= auditorium.title %></td>
+          <td><%= auditorium.capacity %></td>
+          <td><%= link_to 'Manage', edit_admin_auditorium_path(auditorium) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
