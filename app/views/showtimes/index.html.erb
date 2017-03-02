@@ -3,7 +3,10 @@
     Movies Playing On <%= @date.strftime('%-m/%-d/%Y') %>
   </h1>
   <br>
-
+  <p class='text-center'>
+    To choose another date, set your url to the date you want: /showtimes?date=mm/dd/yyyy
+  </p>
+  <br>
   <div class='showtimes-by-date row'>
     <table class='showtimes-table table table-striped table-bordered table-condensed'>
       <thead>
