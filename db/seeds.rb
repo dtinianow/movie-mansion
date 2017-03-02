@@ -17,11 +17,11 @@ class Seeder
   def create_movies
     8.times do |i|
       movie = Movie.create!(
-      title: Faker::Book.title,
-      minutes: Faker::Number.between(50, 250),
-      rating: ['G', 'PG', 'PG-13', 'R'].sample,
-      genre: Faker::Book.genre,
-      image_url: "https://robohash.org/#{rand(10)}"
+        title: Faker::Book.title,
+        minutes: Faker::Number.between(50, 250),
+        rating: ['G', 'PG', 'PG-13', 'R'].sample,
+        genre: Faker::Book.genre,
+        image_url: "https://robohash.org/#{rand(10)}"
       )
       puts "Created Movie #{movie.title}"
     end
@@ -30,8 +30,8 @@ class Seeder
   def create_auditoriums
     8.times do |i|
       auditorium = Auditorium.create!(
-      title: Faker::Company.name,
-      capacity: Faker::Number.between(60, 300)
+        title: Faker::StarWars.planet,
+        capacity: Faker::Number.between(60, 300)
       )
       puts "Created Auditorium #{auditorium.title}"
     end

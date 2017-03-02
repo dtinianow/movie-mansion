@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'showtimes#index'
+
   resources :showtimes, only: [:index]
   resources :orders, only: [:new, :create]
 
@@ -16,4 +18,6 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :new, :create]
     resources :auditoriums, only: [:index, :new, :create, :edit, :update]
   end
+
+  get '*path' => redirect('/')
 end
