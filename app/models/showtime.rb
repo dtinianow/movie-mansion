@@ -7,4 +7,9 @@ class Showtime < ApplicationRecord
   validates :end_time, presence: true
   validates :price, presence: true
   validates :tickets_available, presence: true
+
+  def self.on_date(date)
+    where(start_time: date.midnight..date.end_of_day)
+      .order('start_time ASC')
+  end
 end

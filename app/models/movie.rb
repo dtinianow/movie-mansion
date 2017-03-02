@@ -9,5 +9,6 @@ class Movie < ApplicationRecord
   def self.showings_on_date(date)
     joins(:showtimes)
       .where(showtimes: { start_time: date.midnight..date.end_of_day })
+      .distinct
   end
 end

@@ -21,7 +21,7 @@
         <td><%= movie.minutes %></td>
         <td><%= movie.genre %></td>
         <td>
-          <% movie.showtimes.each do |showtime| %>
+          <% movie.showtimes.on_date(@date).each do |showtime| %>
           <% if tickets_available?(showtime) %>
             <%= link_to format_time(showtime.start_time), \
               new_order_path(showtime: showtime) %>
