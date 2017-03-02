@@ -5,6 +5,7 @@ RSpec.feature 'User can book a showtime' do
     movie = create(:movie)
     auditorium = create(:auditorium)
     showtime = create(:showtime, movie: movie, auditorium: auditorium)
+    card_number = CreditCardValidations::Factory.random(:visa)
 
     expect(Order.count).to eq 0
     expect(showtime.tickets_available).to eq 160
@@ -15,7 +16,7 @@ RSpec.feature 'User can book a showtime' do
       fill_in 'First Name', with: 'David'
       fill_in 'Last Name', with: 'T'
       fill_in 'Email Address', with: 'david@example.com'
-      fill_in 'Credit Card Number', with: '55555555555555555'
+      fill_in 'Credit Card Number', with: card_number
       fill_in 'Credit Card Expiration Date', with: '03/19'
       click_button 'Book Showtime'
     end
@@ -42,6 +43,7 @@ RSpec.feature 'User can book a showtime' do
       auditorium: auditorium,
       tickets_available: 0
     )
+    card_number = CreditCardValidations::Factory.random(:visa)
 
     expect(Order.count).to eq 0
     expect(showtime.tickets_available).to eq(0)
@@ -52,7 +54,7 @@ RSpec.feature 'User can book a showtime' do
       fill_in 'First Name', with: 'David'
       fill_in 'Last Name', with: 'T'
       fill_in 'Email Address', with: 'david@example.com'
-      fill_in 'Credit Card Number', with: '55555555555555555'
+      fill_in 'Credit Card Number', with: card_number
       fill_in 'Credit Card Expiration Date', with: '03/19'
       click_button 'Book Showtime'
     end
