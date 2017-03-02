@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
 
     resources :orders, only: [:index]
-    resources :movies, only: [:index]
+    resources :movies, only: [:index, :new, :create]
     resources :auditoriums, only: [:index, :new, :create, :edit, :update]
   end
 end

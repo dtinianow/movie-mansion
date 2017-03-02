@@ -1,0 +1,25 @@
+<div id='new-movie-page'>
+  <h1 id='new-movie-header'>Add New Movie</h1>
+  <br>
+  <div id='new-movie-form'>
+    <%= form_for @movie do |f| %>
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :minutes, 'Minutes' %>
+    <%= f.text_field :minutes %>
+    <br>
+    <%= f.label :rating, 'Rating' %>
+    <%= f.text_field :rating %>
+    <br>
+    <%= f.label :genre, 'Genre' %>
+    <%= f.text_field :genre %>
+    <br>
+    <%= f.label :image_url, 'Image URL' %>
+    <%= f.text_field :image_url %>
+    <br>
+    <%= f.submit 'Create Movie' %>
+    <% end %>
+    <br>
+  </div>
+</div>

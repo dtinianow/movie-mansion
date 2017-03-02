@@ -1,5 +1,9 @@
 <h1 id='admin-movies-header'>Order History By Movie</h1>
 
+<div id='admin-create-new-movie-button'>
+  <%= link_to 'Create New Movie', new_admin_movie_path %>
+</div>
+
 <div id='admin-movies-list'>
   <li>
     <% @movies.each do |movie| %>

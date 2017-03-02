@@ -7,7 +7,6 @@
         <th>ID</th>
         <th>Title</th>
         <th>Capacity</th>
-        <th>Showtimes</th>
         <th>Auditorium</th>
       </tr>
     </thead>
@@ -17,7 +16,6 @@
         <td><%= auditorium.id %></td>
         <td><%= auditorium.title %></td>
         <td><%= auditorium.capacity %></td>
-        <td><%= link_to 'Manage Showtimes', admin_auditoriums_showtimes_path(auditorium) %></td>
         <td><%= link_to 'Manage Auditorium', edit_admin_auditorium_path(auditorium) %></td>
       </tr>
       <% end %>

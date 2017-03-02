@@ -1,7 +1,11 @@
 module DateHelper
   def find_date(date)
     if date
-      DateTime.strptime(date, '%m/%d/%Y')
+      begin
+        DateTime.strptime(date, '%m/%d/%Y')
+      rescue ArgumentError
+        DateTime.now.to_date
+      end
     else
       DateTime.now.to_date
     end

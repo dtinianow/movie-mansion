@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Movie, type: :model do
-  it { is_expected.to have_many(:showtimes) }
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:minutes) }
+  it { is_expected.to validate_presence_of(:rating) }
+  it { is_expected.to validate_presence_of(:genre) }
+  it { is_expected.to validate_presence_of(:image_url) }
 
   it 'should get movie showtimes on a specific date' do
     movie = create(:movie)
