@@ -12,7 +12,7 @@ You can find a live version of this application hosted on Heroku [here](https://
 
 To set up a local copy of this project, perform the following:
 
-  1. Clone the repository: `git clone https://github.com/dtinianow`
+  1. Clone the repository: `git clone https://github.com/dtinianow/movie-mansion`
   2. `cd` into the project's directory
   3. Run `bundle install`
   4. Run `bundle exec rake db:{create,migrate,seed}` to set up the postgres database and seed it.
