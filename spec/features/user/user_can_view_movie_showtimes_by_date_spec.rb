@@ -10,11 +10,11 @@ RSpec.feature 'User can view movie showtimes by date' do
 
     visit showtimes_path
 
-    within('#showtimes-header') do
+    within('.showtimes-header') do
       expect(page).to have_content "Movies Playing On #{current_date}"
     end
 
-    within('#showtimes-table tbody tr:nth-child(1)') do
+    within('.showtimes-table tbody tr:nth-child(1)') do
       expect(page).to have_xpath("//img[@src='#{movie.image_url}']")
       expect(page).to have_content(movie.title)
       expect(page).to have_content(movie.minutes)
@@ -37,11 +37,11 @@ RSpec.feature 'User can view movie showtimes by date' do
 
     visit showtimes_path(date: current_date)
 
-    within('#showtimes-header') do
+    within('.showtimes-header') do
       expect(page).to have_content "Movies Playing On #{current_date}"
     end
 
-    within('#showtimes-table tbody tr:nth-child(1)') do
+    within('.showtimes-table tbody tr:nth-child(1)') do
       expect(page).to have_xpath("//img[@src='#{movie.image_url}']")
       expect(page).to have_content(movie.title)
       expect(page).to have_content(movie.minutes)

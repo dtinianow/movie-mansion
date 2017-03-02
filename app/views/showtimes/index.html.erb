@@ -1,35 +1,42 @@
-<h1 id='showtimes-header'>Movies Playing On <%= @date.strftime('%-m/%-d/%Y') %></h1>
+<div class='container-fluid'>
+  <h1 class='showtimes-header text-center well'>
+    Movies Playing On <%= @date.strftime('%-m/%-d/%Y') %>
+  </h1>
+  <br>
 
-<div id='showtimes-by-date'>
-  <table id='showtimes-table'>
-    <thead>
-      <tr>
-        <th>Picture</th>
-        <th>Title</th>
-        <th>Rating</th>
-        <th>Length</th>
-        <th>Genre</th>
-        <th>Showtimes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @movies.each do |movie| %>
-      <tr>
-        <td><%= image_tag(movie.image_url, size: 150) %></td>
-        <td><%= movie.title %></td>
-        <td><%= movie.rating %></td>
-        <td><%= movie.minutes %></td>
-        <td><%= movie.genre %></td>
-        <td>
-          <% movie.showtimes.on_date(@date).each do |showtime| %>
-          <% if tickets_available?(showtime) %>
-            <%= link_to format_time(showtime.start_time), \
+  <div class='showtimes-by-date row'>
+    <table class='showtimes-table table table-striped table-bordered table-condensed'>
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Title</th>
+          <th>Rating</th>
+          <th>Length</th>
+          <th>Genre</th>
+          <th>Showtimes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @movies.each do |movie| %>
+        <tr>
+          <td><%= image_tag(movie.image_url, size: 150) %></td>
+          <td><%= movie.title %></td>
+          <td><%= movie.rating %></td>
+          <td><%= movie.minutes %> min</td>
+          <td><%= movie.genre %></td>
+          <td>
+            <% movie.showtimes.on_date(@date).each do |showtime| %>
+            <% if tickets_available?(showtime) %>
+              <%= link_to format_time(showtime.start_time), \
               new_order_path(showtime: showtime) %>
+              <br>
+              <br>
+              <% end %>
             <% end %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
