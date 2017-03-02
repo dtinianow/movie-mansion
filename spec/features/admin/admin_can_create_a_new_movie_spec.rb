@@ -6,11 +6,11 @@ RSpec.feature 'Admin can create a new movie' do
 
     visit new_admin_movie_path
 
-    within('.admin-new-movie-header') do
+    within('#new-movie-header') do
       expect(page).to have_content 'Add New Movie'
     end
 
-    within('.admin-new-movie-form') do
+    within('#new-movie-form') do
       fill_in 'Title', with: 'Ex Machina'
       fill_in 'Minutes', with: 108
       fill_in 'Rating', with: 'R'

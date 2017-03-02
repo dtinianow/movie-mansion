@@ -9,7 +9,7 @@ class Admin::MoviesController < Admin::BaseController
 
   def create
     movie = Movie.new(movie_params)
-    if auditorium.save
+    if movie.save
       flash[:success] = 'Movie successfully created!'
       redirect_to admin_movies_path
     else
