@@ -1,43 +1,39 @@
-<div>
-  <h1 id='admin-orders-header' class='text-center well'>All Orders</h1>
+<h1 id='admin-orders-header' class='text-center well'>All Orders</h1>
 
-  <br>
-  <div class='text-center'>
-    <%= link_to 'Return to Admin Tools', admin_root_path %>
-  </div>
-  <br>
-
-
-  <div id='admin-all-orders row'>
-    <table id='admin-orders-table' class='table table-striped table-bordered table-condensed'>
-      <thead>
-        <tr>
-          <th>Order Number</th>
-          <th>Name</th>
-          <th>Movie</th>
-          <th>Date</th>
-          <th>Showtime</th>
-          <th>Price</th>
-          <th>Auditorium</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |order| %>
-        <tr>
-          <td><%= order.id %></td>
-          <td><%= order.first_name %> <%= order.last_name %></td>
-          <td><%= order.showtime.movie.title %></td>
-          <td><%= format_date(order.showtime.start_time) %></td>
-          <td><%= format_time(order.showtime.start_time) %></td>
-          <td><%= order.showtime.price %></td>
-          <td><%= order.showtime.auditorium.title %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <br>
-  <div class='text-center well'>
-    <%= link_to 'Return to Admin Tools', admin_root_path %>
-  </div>
+<br>
+<div class='text-center'>
+  <%= link_to 'Return to Admin Tools', admin_root_path %>
+</div>
+<br>
+<div id='admin-all-orders row'>
+  <table id='admin-orders-table' class='table table-striped table-bordered table-condensed'>
+    <thead>
+      <tr>
+        <th>Order Number</th>
+        <th>Name</th>
+        <th>Movie</th>
+        <th>Date</th>
+        <th>Showtime</th>
+        <th>Price</th>
+        <th>Auditorium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.first_name %> <%= order.last_name %></td>
+        <td><%= order.showtime.movie.title %></td>
+        <td><%= format_date(order.showtime.start_time) %></td>
+        <td><%= format_time(order.showtime.start_time) %></td>
+        <td><%= order.showtime.price %></td>
+        <td><%= order.showtime.auditorium.title %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<div class='text-center well'>
+  <%= link_to 'Return to Admin Tools', admin_root_path %>
 </div>

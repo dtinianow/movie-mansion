@@ -1,12 +1,12 @@
 <div id='new-showtime-order-page'>
-  <h1 id='new-showtime-order-header'>
+  <h1 id='new-showtime-order-header' class='text-center well'>
     Purchase Ticket for
     <%= @showtime.movie.title %> on
     <%= format_date(@showtime.start_time) %> at
     <%= format_time(@showtime.start_time) %>
   </h1>
   <br>
-  <div id='new-showtime-order-form'>
+  <div id='new-showtime-order-form' class='well new-form text-center'>
     <%= form_for @order do |f| %>
     <%= f.label :first_name, 'First Name' %>
     <%= f.text_field :first_name %>
@@ -26,6 +26,8 @@
     <%= f.hidden_field :showtime_id, :value => @showtime.id %>
     <%= f.submit 'Book Showtime' %>
     <% end %>
+    <%= link_to 'Cancel', showtimes_path(date: format_date(@showtime.start_time)) %>
     <br>
   </div>
+  <br>
 </div>

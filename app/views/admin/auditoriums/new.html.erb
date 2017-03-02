@@ -1,23 +1,21 @@
-<div>
-  <div class='admin-new-auditorium'>
-    <h1 class='admin-new-auditorium-header text-center well'>Add New Auditorium</h1>
-    <br>
-    <div class='admin-new-auditorium-form  well new-form text-center'>
-      <%= form_for @auditorium, url: admin_auditoriums_path, method: :create do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-      <br>
-      <%= f.label :capacity  %>
-      <%= f.text_field :capacity %>
-      <br>
-      <%= f.submit 'Create Auditorium' %>
-      <% end %>
-      <br>
-    </div>
-  </div>
-
+<div class='admin-new-auditorium'>
+  <h1 class='admin-new-auditorium-header text-center well'>Add New Auditorium</h1>
   <br>
-  <div class='text-center'>
-    <%= link_to 'Return to Admin Tools', admin_root_path %>
+  <div class='admin-new-auditorium-form well new-form text-center'>
+    <%= form_for @auditorium, url: admin_auditoriums_path, method: :create do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :capacity  %>
+    <%= f.text_field :capacity %>
+    <br>
+    <%= f.submit 'Create Auditorium' %>
+    <% end %>
+    <br>
   </div>
+</div>
+
+<br>
+<div class='text-center'>
+  <%= link_to 'Return to Admin Tools', admin_root_path %>
 </div>

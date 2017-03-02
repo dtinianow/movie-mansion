@@ -1,19 +1,17 @@
-<div>
-  <h1 id='admin-movies-header' class='text-center well'>Order History By Movie</h1>
+<h1 id='admin-movies-header' class='text-center well'>Order History By Movie</h1>
 
-  <div id='admin-create-new-movie-button' class='text-center well'>
-    <%= link_to 'Create New Movie', new_admin_movie_path %>
-  </div>
+<div id='admin-create-new-movie-button' class='text-center well'>
+  <%= link_to 'Create New Movie', new_admin_movie_path %>
+</div>
 
-  <div id='admin-movies-list'>
-    <li class='list-group text-center list-unstyled'>
-      <% @movies.each do |movie| %>
-      <ul class="list-group-item"><%= link_to movie.title, admin_movies_orders_path(movie) %></ul>
-      <% end %>
-    </li>
-  </div>
-  <br>
-  <div class='text-center well'>
-    <%= link_to 'Return to Admin Tools', admin_root_path %>
-  </div>
+<div id='admin-movies-list'>
+  <li class='list-group text-center list-unstyled'>
+    <% @movies.each do |movie| %>
+    <ul class="list-group-item"><%= link_to movie.title, admin_movies_orders_path(movie) %></ul>
+    <% end %>
+  </li>
+</div>
+<br>
+<div class='text-center well'>
+  <%= link_to 'Return to Admin Tools', admin_root_path %>
 </div>
