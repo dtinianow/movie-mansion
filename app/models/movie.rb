@@ -8,6 +8,10 @@ class Movie < ApplicationRecord
 
   def self.showings_on_date(date)
     joins(:showtimes)
-      .where(showtimes: { start_time: date.midnight..date.end_of_day })
+    .where(showtimes: { start_time: date.midnight..date.end_of_day })
+  end
+
+  def self.all_titles
+    all.map { |movie| [ movie.title, movie.id ] }
   end
 end

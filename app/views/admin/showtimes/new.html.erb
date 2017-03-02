@@ -1,0 +1,24 @@
+<div id='new-showtime-page'>
+  <h1 id='new-showtime-header'>Create New Showtime</h1>
+  <br>
+  <div id='new-showtime-form'>
+    <%= form_for @showtime, url: admin_showtimes_path, method: :create do |f| %>
+    <div>Please enter price in this format: 0.00 </div>
+    <%= f.label :price, 'Price' %>
+    <%= f.text_field :price %>
+    <br>
+    <div>Please enter date and time in this format: 'mm/dd/yyyy hh:mm PM'</div>
+    <%= f.label :start_time, 'Date and Time' %>
+    <%= f.text_field :start_time %>
+    <br>
+    <%= f.label :movies %><br>
+    <%= select_tag(:movie_id, options_for_select(@movies)) %>
+    <br>
+    <%= f.label :auditoriums %><br>
+    <%= select_tag(:auditorium_id, options_for_select(@auditoriums)) %>
+    <br>
+    <%= f.submit 'Create Showtime' %>
+    <% end %>
+    <br>
+  </div>
+</div>

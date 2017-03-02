@@ -18,4 +18,8 @@ module DateHelper
   def format_date(datetime)
     datetime.strftime('%-m/%-d/%Y')
   end
+
+  def convert_to_date(input)
+    DateTime.strptime(input, '%m/%d/%Y %I:%M %p')
+  end
 end

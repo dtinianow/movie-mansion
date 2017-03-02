@@ -8,18 +8,17 @@ RSpec.feature 'Admin can create a new showtime' do
     # current_date = DateTime.now.strftime('%-m/%-d/%Y')
     # formatted_showtime = showtime.start_time.strftime("%-I:%M %p")
 
-    visit admin_showtimes_path
+    visit new_admin_showtime_path
 
     within('#new-showtime-header') do
       expect(page).to have_content 'Create New Showtime'
     end
 
     within('#new-showtime-form') do
+      fill_in 'Price', with: '10.00'
+      fill_in 'Date and Time', with: '3/1/2017 2:30 PM'
       select movie.title
       select auditorium.title
-      fill_in 'Date', with: '3/1/2017'
-      fill_in 'Start Time', with: '2:30 PM'
-      fill_in 'Price', with: 10.00
       click_button 'Create Showtime'
     end
 
@@ -34,6 +33,6 @@ RSpec.feature 'Admin can create a new showtime' do
     expect(showtime.start_time.showtime.strftime('%-m/%-d/%Y')).to eq '3/1/2017'
     expect(showtime.price).to eq 10.00
     expect(page).to have_content 'Showtime successfully created!'
-    expect(current_path).to eq showtimes_path
+    expect(current_path).to eq new_admin_showtimes_path
   end
 end
