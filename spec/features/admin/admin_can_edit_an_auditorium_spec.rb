@@ -6,7 +6,7 @@ RSpec.feature 'Admin can edit an auditorium' do
 
     visit admin_auditoriums_path
 
-    click_on 'Manage Auditorium'
+    click_on 'Manage'
 
     within('.admin-edit-auditorium-header') do
       expect(page).to have_content "Edit Auditorium #{auditorium.title}"
