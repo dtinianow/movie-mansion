@@ -19,7 +19,7 @@ FactoryGirl.define do
     start_time date
     end_time { date + movie.minutes.minutes }
     price 10.00
-    tickets_available 120
+    tickets_available { auditorium.capacity }
   end
 
   factory :order do
